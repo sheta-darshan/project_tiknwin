@@ -1,0 +1,95 @@
+/* Base styles */
+body {
+    font-family: 'Arial', sans-serif; /* Use a more modern sans-serif font */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #f9f9f9; /* Light background for contrast */
+}
+
+/* Header styles */
+header {
+    background: #003366; /* A slightly darker blue for better contrast */
+    color: #fff;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adding shadow for depth */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px; /* Limit width for larger screens */
+    margin: 0 auto; /* Center the navbar */
+    padding: 0 1rem; /* Add horizontal padding */
+}
+
+/* Navigation links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    transition: background 0.3s, color 0.3s; /* Smooth transition for color changes */
+}
+
+.nav-links a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffcc00; /* Change text color on hover for better visibility */
+}
+
+/* Container styles */
+.container {
+    max-width: 1200px;
+    margin: 0 auto; /* Center container */
+    padding: 1rem;
+}
+
+/* Footer styles */
+footer {
+    background: #003366; /* Consistent dark blue */
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 2rem; /* Add space between content and footer */
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0; /* Remove default margin */
+    display: flex; /* Display links in a row */
+    justify-content: center; /* Center footer links */
+    gap: 10px; /* Space between footer links */
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px; /* Add padding for better click area */
+    transition: color 0.3s; /* Smooth transition for text color */
+}
+
+.footer-links a:hover {
+    text-decoration: underline; /* Underline on hover */
+    color: #ffcc00; /* Change color on hover */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Stack items on smaller screens */
+        align-items: flex-start; /* Align items to the start */
+    }
+    
+    .nav-links {
+        flex-direction: column; /* Stack nav links on small screens */
+        gap: 10px; /* Reduce gap between links */
+    }
+}
