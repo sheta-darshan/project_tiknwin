@@ -93,3 +93,20 @@ footer {
         gap: 10px; /* Reduce gap between links */
     }
 }
+
+@media (max-width: 768px) {
+    .logo-img {
+        max-width: 80px; /* Smaller logo size for mobile */
+    }
+
+    .nav-links {
+        flex-direction: column; /* Stack the navigation links vertically */
+        gap: 10px; /* Adjust the gap between items */
+    }
+}
+
+.logo-img {
+    width: 120px; /* Adjust width to your needs */
+    height: auto; /* Keeps the aspect ratio */
+    max-width: 100%;
+}

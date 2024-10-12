@@ -1,18 +1,23 @@
+{% load static %}
 <header>
     <nav class="navbar">
         <div class="container">
-            <a href="{% url 'home' %}" class="logo">TikNwin</a>
+            <a href="{% url 'home' %}" class="logo">
+                <img src="{% static 'images/logo.png' %}" alt="TikNwin Logo" class="logo-img">
+            </a>
             <ul class="nav-links">
                 <li><a href="#">Predictions</a></li>
                 <li><a href="#">Winners</a></li>
                 <li><a href="#">About Us</a></li>
-                <li><a href="#}">Contact</a></li>
+                <li><a href="#">Contact</a></li>
                 {% if user.is_authenticated %}
                     <li><a href="#">Hi {{ user.username }}!</a></li>
-                    <li><form action="{% url 'logout' %}" method="post">
-                        {% csrf_token %}
-                        <button type="submit">Log Out</button>
-                    </form></li>
+                    <li>
+                        <form action="{% url 'logout' %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">Log Out</button>
+                        </form>
+                    </li>
                 {% else %}
                     <li><a href="{% url 'login' %}">Login</a></li>
                     <li><a href="{% url 'signup' %}">Register</a></li>
