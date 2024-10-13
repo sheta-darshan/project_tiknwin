@@ -1,27 +1,27 @@
 /* Base styles */
 body {
-    font-family: 'Arial', sans-serif; /* Use a more modern sans-serif font */
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    background-color: #f9f9f9; /* Light background for contrast */
+    background-color: #f9f9f9;
 }
 
 /* Header styles */
 header {
-    background: #003366; /* A slightly darker blue for better contrast */
+    background: #003366;
     color: #fff;
     padding: 1rem 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adding shadow for depth */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px; /* Limit width for larger screens */
-    margin: 0 auto; /* Center the navbar */
-    padding: 0 1rem; /* Add horizontal padding */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
 }
 
 /* Navigation links */
@@ -36,77 +36,115 @@ header {
     text-decoration: none;
     padding: 8px 15px;
     border-radius: 4px;
-    transition: background 0.3s, color 0.3s; /* Smooth transition for color changes */
+    transition: background 0.3s, color 0.3s;
 }
 
 .nav-links a:hover {
     background: rgba(255, 255, 255, 0.2);
-    color: #ffcc00; /* Change text color on hover for better visibility */
+    color: #ffcc00;
 }
 
 /* Container styles */
 .container {
     max-width: 1200px;
-    margin: 0 auto; /* Center container */
+    margin: 0 auto;
     padding: 1rem;
 }
 
 /* Footer styles */
 footer {
-    background: #003366; /* Consistent dark blue */
+    background: #003366;
     color: #fff;
     text-align: center;
     padding: 1rem 0;
-    margin-top: 2rem; /* Add space between content and footer */
+    margin-top: 2rem;
 }
 
 .footer-links {
     list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
     padding: 0;
-    margin: 0; /* Remove default margin */
-    display: flex; /* Display links in a row */
-    justify-content: center; /* Center footer links */
-    gap: 10px; /* Space between footer links */
+    margin: 0;
 }
 
 .footer-links a {
     color: #fff;
     text-decoration: none;
-    padding: 5px 10px; /* Add padding for better click area */
-    transition: color 0.3s; /* Smooth transition for text color */
+    padding: 5px 10px;
+    transition: color 0.3s;
 }
 
 .footer-links a:hover {
-    text-decoration: underline; /* Underline on hover */
-    color: #ffcc00; /* Change color on hover */
+    text-decoration: underline;
+    color: #ffcc00;
 }
 
 /* Responsive styles */
 @media (max-width: 768px) {
     .navbar {
-        flex-direction: column; /* Stack items on smaller screens */
-        align-items: flex-start; /* Align items to the start */
+        flex-direction: column;
+        align-items: flex-start;
     }
     
     .nav-links {
-        flex-direction: column; /* Stack nav links on small screens */
-        gap: 10px; /* Reduce gap between links */
+        flex-direction: column;
+        gap: 10px;
     }
-}
 
-@media (max-width: 768px) {
     .logo-img {
-        max-width: 80px; /* Smaller logo size for mobile */
-    }
-
-    .nav-links {
-        flex-direction: column; /* Stack the navigation links vertically */
-        gap: 10px; /* Adjust the gap between items */
+        max-width: 80px;
     }
 }
 
+/* Logo styles */
 .logo-img {
-    width: 120px; /* Adjust width to your needs */
-    height: auto; /* Keeps the aspect ratio */
+    width: 120px;
+    height: auto;
     max-width: 100%;
+}
+
+/* Profile container */
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile-details {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Ensures it adjusts better on smaller screens */
+}
+
+.profile-picture img {
+    max-width: 150px;
+    border-radius: 50%;
+    object-fit: cover; /* Ensures the image is properly fitted */
+}
+
+.profile-info {
+    flex-grow: 1;
+    min-width: 200px; /* Ensures some width on smaller screens */
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #0056b3;
 }

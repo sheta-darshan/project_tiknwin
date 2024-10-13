@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Server Error{% endblock %}
+
+{% block content %}
+<div class="container" style="text-align: center; padding: 50px 0;">
+    <h1 style="font-size: 48px; color: #d9534f;">500</h1>
+    <p style="font-size: 18px;">Sorry, something went wrong on our end.</p>
+    <p>We're working on it, please try again later.</p>
+    <a href="{% url 'home' %}" class="btn" style="text-decoration: none; color: #fff; background-color: #004080; padding: 10px 20px; border-radius: 5px; display: inline-block; margin-top: 20px;">
+        Back to Home
+    </a>
+</div>
+{% endblock %}
