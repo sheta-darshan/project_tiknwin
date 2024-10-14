@@ -146,3 +146,18 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+# for encryption
+import environ
+
+
+env = environ.Env()
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
+# Read the encryption key from the environment
+ENCRYPTION_KEY = env('ENCRYPTION_KEY')
+
+# Ensure that the key is loaded
+if ENCRYPTION_KEY is None:
+    raise ValueError("ENCRYPTION_KEY environment variable is not set.")

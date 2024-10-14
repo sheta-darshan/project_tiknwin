@@ -8,10 +8,10 @@ from django.urls import reverse_lazy
 class UserProfileView(LoginRequiredMixin, DetailView):
     model = UserProfile
     template_name = "profiles/profile_detail.html"
-    
-    def get_object(self, queryset = None):
+
+    def get_object(self, queryset=None):
         return self.request.user.userprofile
-    
+
 
 class UserProfileUpdateView(LoginRequiredMixin, UpdateView):
     model = UserProfile
@@ -21,6 +21,7 @@ class UserProfileUpdateView(LoginRequiredMixin, UpdateView):
 
     def get_object(self, queryset=None):
         return self.request.user.userprofile
-    
+
     def get_success_url(self):
-        return reverse_lazy('profile')
+        # Redirect to the profile view after successful update
+        return self.success_url  # This can also simply return self.success_url since it's already defined
