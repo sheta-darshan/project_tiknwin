@@ -16,11 +16,17 @@
         </div>
         
         <div class="profile-info">
+            <p><strong>Email:</strong> {{ userprofile.user.email|default:"No Email provided." }}</p>
             <p><strong>Bio:</strong> {{ userprofile.bio|default:"No bio provided." }}</p>
             <p><strong>Location:</strong> {{ userprofile.location|default:"Not specified" }}</p>
             <p><strong>Date of Birth:</strong> {{ userprofile.date_of_birth|date:"F j, Y" }}</p>
             <p><strong>PAN:</strong> {{ userprofile.get_pan|default:"Not provided." }}</p>
             <p><strong>Aadhar:</strong> {{ userprofile.get_aadhar|default:"Not provided." }}</p>
+            
+            <!-- Display Membership Information -->
+            <p><strong>Membership Type:</strong> {{ userprofile.membership_type|title }}</p>
+            <p><strong>Points:</strong> {{ userprofile.points }}</p>
+
             <a href="{% url 'edit_profile' %}" class="btn btn-primary">Edit Profile</a>
         </div>
     </div>

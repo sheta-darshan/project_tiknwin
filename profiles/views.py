@@ -25,3 +25,9 @@ class UserProfileUpdateView(LoginRequiredMixin, UpdateView):
     def get_success_url(self):
         # Redirect to the profile view after successful update
         return self.success_url  # This can also simply return self.success_url since it's already defined
+    
+    def form_valid(self, form):
+        # Update the email field of the related User instance
+        self.request.user.email = form.cleaned_data.get('email')
+        self.request.user.save()
+        return super().form_valid(form)
