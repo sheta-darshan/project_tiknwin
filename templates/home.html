@@ -1,21 +1,52 @@
 {% extends "base.html" %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Tiknwin - Home{% endblock %}
 
 {% block content %}
 <main>
-    {% if user.is_authenticated %}
-        <p>Hi {{ user.username }}!</p>
-        <p><a href="{% url 'password_change' %}">Password Change</a></p>
-        <form action="{% url 'logout' %}" method="post">
-            {% csrf_token %}
-            <button type="submit">Log Out</button>
-        </form>
-    {% else %}
-        <p>You are not logged in.</p>
-        <p><a href="{% url 'password_reset' %}">Password Reset</a></p>
-        <p><a href="{% url 'login' %}">Log In</a></p>
-        <p><a href="{% url 'signup' %}">Sign Up</a></p>  <!-- Added Sign Up link -->
-    {% endif %}
+    <header>
+        <h1>Welcome to Tiknwin!</h1>
+        <p>Your platform for predicting game outcomes and earning rewards.</p>
+    </header>
+
+    <section>
+        <h2>Project Overview</h2>
+        <p>
+            Tiknwin is a mobile and web platform designed for game enthusiasts to predict the outcomes of their favorite games.
+            Earn points for correct guesses and win exciting prizes through our daily, weekly, and monthly contests.
+        </p>
+    </section>
+
+    <section>
+        <h2>Key Features</h2>
+        <ul>
+            <li><strong>Game Predictions:</strong> Predict outcomes before matches and earn points.</li>
+            <li><strong>Membership Options:</strong> Choose between free and paid memberships with exclusive benefits.</li>
+            <li><strong>Prize Distribution:</strong> Redeem your points for prizes through Amazon and Flipkart.</li>
+            <li><strong>Secure ID Verification:</strong> Ensure safe and fair gameplay with PAN and Aadhar verification.</li>
+            <li><strong>Monetization:</strong> Enjoy a seamless experience with integrated ads and affiliate marketing.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>How It Works</h2>
+        <ol>
+            <li>Create an account and choose your membership type.</li>
+            <li>Predict game outcomes before the match starts.</li>
+            <li>Earn points based on your correct predictions.</li>
+            <li>Redeem your points for prizes!</li>
+        </ol>
+    </section>
+
+    <section>
+        <h2>Get Started</h2>
+        {% if user.is_authenticated %}
+            <p>Hi {{ user.username }}! Ready to make your predictions?</p>
+            <p><a href="#">Go to Predictions</a></p>
+        {% else %}
+            <p>Join the fun! Sign up to start predicting and earning rewards.</p>
+            <p><a href="{% url 'signup' %}">Sign Up</a> | <a href="{% url 'login' %}">Log In</a></p>
+        {% endif %}
+    </section>
 </main>
 {% endblock %}

@@ -1,0 +1,17 @@
+<!-- games/templates/games/team_match_detail.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>{{ object.game }}</h2>
+  <p><strong>Date:</strong> {{ object.date|date:"F j, Y, g:i a" }}</p>
+  <p><strong>Teams:</strong> {{ object.team1.name }} vs {{ object.team2.name }}</p>
+  <p><strong>Status:</strong> {{ object.status }}</p>
+  
+  <p><strong>Winner:</strong>
+    {% if object.winner %}
+      {{ object.winner.name }}
+    {% else %}
+      Not Declared
+    {% endif %}
+  </p>
+{% endblock %}

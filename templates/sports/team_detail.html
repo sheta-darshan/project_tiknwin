@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ team.name }}</h1>
+{% if team.logo %}
+    <img src="{{ team.logo.url }}" alt="{{ team.name }} Logo">
+{% endif %}
+<p>{{ team.description }}</p>
+<p>Founded: {{ team.founded_year }}</p>
+<p>City: {{ team.city }}</p>
+<p>Stadium: {{ team.stadium }}</p>
+
+<h2>Players</h2>
+<ul>
+    {% for player in players %}
+        <li><a href="{% url 'sports:player_detail' pk=player.id %}">{{ player.first_name }} {{ player.last_name }}</a></li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'sports:sport_detail' category_id=team.sport.category.id pk=team.sport.id %}">Back to {{ team.sport.name }}</a>
+{% endblock %}

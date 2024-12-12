@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Matches by Sport</h1>
+  <h2>{{ sport.name }}</h2>
+  <ul>
+    <li>
+      <h3>Team Matches</h3>
+      <ul>
+        {% for match in matches %}
+          <li>
+            <a href="{% url 'team_match_detail' match.id %}">{{ match }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </li>
+    <li>
+      <h3>Individual Matches</h3>
+      <ul>
+        {% for match in individual_matches %}
+          <li>
+            <a href="{% url 'individual_match_detail' match.id %}">{{ match }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </li>
+    <li>
+      <h3>Flexible Matches</h3>
+      < ul>
+        {% for match in flexible_matches %}
+          <li>
+            <a href="{% url 'flexible_match_detail' match.id %}">{{ match }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </li>
+  </ul>
+{% endblock %}

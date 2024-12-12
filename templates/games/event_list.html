@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Events</h2>
+  <ul>
+    {% for event in events %}
+    <li>
+      <a href="{% url 'games:event-detail' event.pk %}">{{ event.name }}</a> 
+      - {{ event.start_date|date:"F j, Y" }} to {{ event.end_date|date:"F j, Y" }}
+    </li>    
+    {% endfor %}
+  </ul>
+{% endblock %}

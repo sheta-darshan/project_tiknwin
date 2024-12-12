@@ -1,0 +1,37 @@
+<!-- games/templates/games/team_match_detail.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>{{ object.game }}</h2>
+  <p><strong>Date:</strong> {{ object.date|date:"F j, Y, g:i a" }}</p>
+  
+  {% if object.teams.all %}
+    <h3>Teams:</h3>
+    <ul>
+      {% for team in object.teams.all %}
+        <li>{{ team.name }} - {{ team.score }} points</li>
+      {% endfor %}
+    </ul>
+  {% elif object.participants.all %}
+    <h3>Participants:</h3>
+    <ul>
+      {% for participant in object.participants.all %}
+        <li>{{ participant.name }} - {{ participant.score }} points</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No participants or teams listed for this match.</p>
+  {% endif %}
+  
+  <p><strong>Status:</strong> {{ object.status }}</p>
+  <p><strong>Winner:</strong>
+    {% if object.winner %}
+      {{ object.winner.name }}
+    {% else %}
+      TBD
+    {% endif %}
+  </p>
+  
+  <p><strong>Event:</strong> <a href="{% url 'games:event-detail' object.event.pk %}">{{ object.event.name }}</a></p>
+  <a href="{% url 'games:event-detail' object.event.pk %}">Back to Event</a>
+{% endblock %}

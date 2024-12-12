@@ -22,6 +22,11 @@ class UserProfileForm(forms.ModelForm):
             self.fields['pan'].initial = self.instance.get_pan()  # Decrypted PAN
             self.fields['aadhar'].initial = self.instance.get_aadhar()  # Decrypted Aadhar
             self.fields['email'].initial = self.instance.user.email  # User's email
+            
+        # Make image fields optional
+            self.fields['profile_picture'].required = False
+            self.fields['pan_image'].required = False
+            self.fields['aadhar_image'].required = False
 
     def validate_and_encrypt(self, field_name, value, pattern, error_message, setter):
         """

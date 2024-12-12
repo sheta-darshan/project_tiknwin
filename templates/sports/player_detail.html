@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ player.first_name }} {{ player.last_name }}</h1>
+{% if player.profile_picture %}
+    <img src="{{ player.profile_picture.url }}" alt="{{ player.first_name }} {{ player.last_name }}">
+{% endif %}
+<p>Bio: {{ player.bio }}</p>
+<p>Date of Birth: {{ player.date_of_birth }}</p>
+<p>Nationality: {{ player.nationality }}</p>
+
+<h2>Teams</h2>
+<ul>
+    {% for team in teams %}
+        <li><a href="{% url 'sports:team_detail' pk=team.id %}">{{ team.name }}</a></li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'sports:sport_detail' category_id=player.sport.category.id pk=player.sport.id %}">Back to {{ player.sport.name }}</a>
+{% endblock %}

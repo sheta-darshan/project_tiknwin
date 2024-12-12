@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Disciplines</h1>
+<ul>
+    {% for discipline in disciplines %}
+        <li><a href="{% url 'sports:sport_discipline_detail' pk=discipline.id %}">{{ discipline.name }}</a></li>
+    {% endfor %}
+</ul>
+<a href="{% url 'sports:sport_list' category_id=sport_id %}">Back to Sports</a>
+{% endblock %}

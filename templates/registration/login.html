@@ -3,10 +3,38 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
-<h2>Log In</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form }}
-  <button type="submit">Log In</button>
-</form>
+<div class="container">
+    <h2><center>Log In<center></h2>
+    <form method="post" class="form">
+        {% csrf_token %}
+        
+        <!-- Display form errors at the top, if any -->
+        {% if form.non_field_errors %}
+            <ul class="form-error">
+                {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        
+        <!-- Loop through form fields to apply styling -->
+        {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                
+                <!-- Display field-specific errors -->
+                {% if field.errors %}
+                    <ul class="form-error">
+                        {% for error in field.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        {% endfor %}
+        
+        <button type="submit" class="btn">Log In</button>
+    </form>
+</div>
 {% endblock %}

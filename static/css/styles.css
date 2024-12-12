@@ -1,15 +1,28 @@
 /* Base styles */
+:root {
+    --primary-color: #007bff;
+    --primary-dark: #0056b3;
+    --primary-darker: #003d80;
+    --header-bg: #003366;
+    --footer-bg: #003366;
+    --link-hover-color: #ffcc00;
+    --error-color: #d9534f;
+    --background-color: #f9f9f9;
+    --text-color: #333;
+    --light-bg: #fff;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    background-color: #f9f9f9;
+    background-color: var(--background-color);
 }
 
 /* Header styles */
 header {
-    background: #003366;
+    background: var(--header-bg);
     color: #fff;
     padding: 1rem 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -41,7 +54,7 @@ header {
 
 .nav-links a:hover {
     background: rgba(255, 255, 255, 0.2);
-    color: #ffcc00;
+    color: var(--link-hover-color);
 }
 
 /* Container styles */
@@ -51,9 +64,97 @@ header {
     padding: 1rem;
 }
 
+/* Form styles */
+form {
+    background: var(--light-bg);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+form input,
+form select,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background: var(--background-color);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+    outline: none;
+}
+
+form .form-error {
+    color: var(--error-color);
+    font-size: 0.9rem;
+    margin-top: -0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Button styles */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    background-color: var(--primary-darker);
+    transform: translateY(0);
+}
+
+/* Form field error styling */
+.is-invalid {
+    border-color: var(--error-color);
+}
+
+.is-invalid:focus {
+    border-color: var(--error-color);
+    box-shadow: 0 0 5px rgba(217, 83, 79, 0.3);
+}
+
+/* Django default form error messages */
+ul.errorlist {
+    padding: 0;
+    margin: 0 0 10px 0;
+    list-style: none;
+    color: var(--error-color);
+    font-size: 0.9rem;
+}
+
 /* Footer styles */
 footer {
-    background: #003366;
+    background: var(--footer-bg);
     color: #fff;
     text-align: center;
     padding: 1rem 0;
@@ -78,7 +179,7 @@ footer {
 
 .footer-links a:hover {
     text-decoration: underline;
-    color: #ffcc00;
+    color: var(--link-hover-color);
 }
 
 /* Responsive styles */
@@ -87,7 +188,7 @@ footer {
         flex-direction: column;
         align-items: flex-start;
     }
-    
+
     .nav-links {
         flex-direction: column;
         gap: 10px;
@@ -110,7 +211,7 @@ footer {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    background: #f9f9f9;
+    background: var(--background-color);
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -119,32 +220,82 @@ footer {
     display: flex;
     align-items: center;
     gap: 20px;
-    flex-wrap: wrap; /* Ensures it adjusts better on smaller screens */
+    flex-wrap: wrap;
 }
 
 .profile-picture img {
     max-width: 150px;
     border-radius: 50%;
-    object-fit: cover; /* Ensures the image is properly fitted */
+    object-fit: cover;
 }
 
 .profile-info {
     flex-grow: 1;
-    min-width: 200px; /* Ensures some width on smaller screens */
+    min-width: 200px;
 }
 
-.btn {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 8px 16px;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
+/* Dropdown styling */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%; /* Align the dropdown just below the username link */
+    left: 0;
+    background-color: var(--light-bg);
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
-    text-decoration: none;
-    transition: background-color 0.3s;
+    list-style: none;
+    min-width: 150px;
+    z-index: 1000; /* Ensure it appears above other elements */
 }
 
-.btn:hover {
-    background-color: #0056b3;
+.dropdown-menu .dropdown-item {
+    padding: 10px 15px;
+    color: var(--text-color);
+    text-decoration: none;
+    display: block;
+    transition: background 0.3s;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: #f0f0f0;
+    color: var(--header-bg);
+}
+
+.btn-link {
+    background: none;
+    border: none;
+    padding: 10px 15px;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+}
+
+/* Show the dropdown when hovering over the parent */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Make the logout button look like a link */
+.logout-button {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    text-align: left;
+    width: 100%;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    transition: background 0.3s;
+    font: inherit; /* Inherit font styles to match other items */
+}
+
+.logout-button:hover {
+    background-color: #f0f0f0;
+    color: var(--header-bg);
 }

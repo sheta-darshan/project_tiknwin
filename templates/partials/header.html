@@ -2,25 +2,38 @@
 <header>
     <nav class="navbar">
         <div class="container">
+            <!-- Logo -->
             <a href="{% url 'home' %}" class="logo">
                 <img src="{% static 'images/logo.png' %}" alt="TikNwin Logo" class="logo-img">
             </a>
+
+            <!-- Navigation links -->
             <ul class="nav-links">
-                <li><a href="#">Predictions</a></li>
-                <li><a href="#">Winners</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="{% url 'sports:sport_category_list' %}" class="nav-link">Sports</a></li>
+                <li><a href="{% url 'games:event-list' %}" class="nav-link">Games</a></li>
+                <li><a href="#" class="nav-link">Predictions</a></li>
+                <li><a href="#" class="nav-link">Winners</a></li>
+                <li><a href="#" class="nav-link">About Us</a></li>
+                <li><a href="#" class="nav-link">Contact</a></li>
+
+                <!-- User Authentication Links -->
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'profile' %}">Hi {{ user.username }}!</a></li>
-                    <li>
-                        <form action="{% url 'logout' %}" method="post">
-                            {% csrf_token %}
-                            <button type="submit">Log Out</button>
-                        </form>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link">Hi {{ user.username }}!</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'profile' %}" class="dropdown-item">Profile</a></li>
+                            <li><a href="{% url 'password_change' %}" class="dropdown-item">Change Password</a></li>
+                            <li>
+                                <form action="{% url 'logout' %}" method="post" class="logout-form">
+                                    {% csrf_token %}
+                                    <button type="submit" class="dropdown-item btn-link">Log Out</button>
+                                </form>
+                            </li>
+                        </ul>
                     </li>
                 {% else %}
-                    <li><a href="{% url 'login' %}">Login</a></li>
-                    <li><a href="{% url 'signup' %}">Register</a></li>
+                    <li><a href="{% url 'login' %}" class="btn btn-primary">Login</a></li>
+                    <li><a href="{% url 'signup' %}" class="btn btn-secondary">Register</a></li>
                 {% endif %}
             </ul>
         </div>

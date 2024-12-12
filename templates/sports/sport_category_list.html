@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Sport Categories</h1>
+<ul>
+    {% for category in categories %}
+        <li><a href="{% url 'sports:sport_list' category.id %}">{{ category.name }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}

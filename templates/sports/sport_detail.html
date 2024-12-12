@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ sport.name }}</h1>
+<p>{{ sport.description }}</p>
+<p>Olympic Sport: {{ sport.is_olympic_sport|yesno:"Yes,No" }}</p>
+
+<h2>Disciplines</h2>
+<ul>
+    {% for discipline in disciplines %}
+        <li><a href="{% url 'sports:sport_discipline_detail' pk=discipline.id %}">{{ discipline.name }}</a></li>
+    {% endfor %}
+</ul>
+
+<h2>Teams</h2>
+<ul>
+    {% for team in teams %}
+        <li><a href="{% url 'sports:team_detail' pk=team.id %}">{{ team.name }}</a></li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'sports:sport_list' category_id=sport.category.id %}">Back to Sports</a>
+{% endblock %}

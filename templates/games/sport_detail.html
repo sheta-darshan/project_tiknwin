@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Matches by Sport</h1>
+  <h2>{{ sport.name }}</h2>
+  
+  <h3>Team Matches</h3>
+  {% if matches %}
+    <table>
+      <thead>
+        <tr>
+          <th>Match</th>
+          <th>Date</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for match in matches %}
+          <tr>
+            <td>
+              <a href="{% url 'team_match_detail' match.id %}">{{ match.team1.name }} vs {{ match.team2.name }}</a>
+            </td>
+            <td>{{ match.date|date:"F j, Y, g:i a" }}</td>
+            <td>{{ match.status }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No team matches available.</p>
+  {% endif %}
+  
+  <h3>Individual Matches</h3>
+  {% if individual_matches %}
+    <table>
+      <thead>
+        <tr>
+          <th>Match</th>
+          <th>Date</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for match in individual_matches %}
+          <tr>
+            <td>
+              <a href="{% url 'individual_match_detail' match.id %}">{{ match.participant1.name }} vs {{ match.participant2.name }}</a>
+            </td>
+            <td>{{ match.date|date:"F j, Y, g:i a" }}</td>
+            <td>{{ match.status }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No individual matches available.</p>
+  {% endif %}
+  
+  <h3>Flexible Matches</h3>
+  {% if flexible_matches %}
+    <table>
+      <thead>
+        <tr>
+          <th>Match</th>
+          <th>Date</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for match in flexible_matches %}
+          <tr>
+            <td>
+              <a href="{% url 'flexible_match_detail' match.id %}">{{ match.title }}</a> <!-- Adjust this according to your FlexibleMatch model -->
+            </td>
+            <td>{{ match.date|date:"F j, Y, g:i a" }}</td>
+            <td>{{ match.status }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No flexible matches available.</p>
+  {% endif %}
+{% endblock %}

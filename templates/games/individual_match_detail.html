@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>{{ object.game }}</h2>
+  <p><strong>Date:</strong> {{ object.date|date:"F j, Y, g:i a" }}</p>
+  
+  <h3>Participants:</h3>
+  <ul>
+    {% for participant in object.participants.all %}
+      <li>{{ participant.name }} - {{ participant.score }} points</li>
+    {% empty %}
+      <li>No participants found.</li>
+    {% endfor %}
+  </ul>
+  
+  <p><strong>Status:</strong> {{ object.status }}</p>
+  
+  <p><strong>Winner:</strong>
+    {% if object.winner %}
+      {{ object.winner.name }}
+    {% else %}
+      TBD
+    {% endif %}
+  </p>
+
+  <a href="{% url 'games:event-detail' object.event.pk %}">Back to Event</a> <!-- Link to the associated event if applicable -->
+{% endblock %}

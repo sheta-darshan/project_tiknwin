@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>{{ event.name }}</h2>
+  <p><strong>Start Date:</strong> {{ event.start_date|date:"F j, Y, g:i a" }}</p>
+  <p><strong>End Date:</strong> {{ event.end_date|date:"F j, Y, g:i a" }}</p>
+  <p>{{ event.description }}</p>
+  
+  <h3>Sports</h3>
+  <ul>
+    {% for sport in event.sports.all %}
+      <li>
+        <a href="{% url 'games:sport-detail' sport.pk %}">{{ sport.name }}</a>
+        <ul>
+          <h4>Team Matches</h4>
+          {% for team_match in team_matches %}
+            {% if team_match.sport == sport %}
+              <li>
+                <a href="{% url 'games:team-match-detail' team_match.pk %}">{{ team_match }}</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+          
+          <h4>Individual Matches</h4>
+          {% for individual_match in individual_matches %}
+            {% if individual_match.sport == sport %}
+              <li>
+                <a href="{% url 'games:individual-match-detail' individual_match.pk %}">{{ individual_match }}</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+
+          <h4>Flexible Matches</h4>
+          {% for flexible_match in flexible_matches %}
+            {% if flexible_match.sport == sport %}
+              <li>
+                <a href="{% url 'games:flexible-match-detail' flexible_match.pk %}">{{ flexible_match }}</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'games:event-list' %}">Back to all events</a>
+{% endblock %}
